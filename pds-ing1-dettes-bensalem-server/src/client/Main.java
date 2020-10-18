@@ -20,26 +20,25 @@ import org.json.simple.*;
 //import socketClient.SocketClient;
 
 public class Main {
-	public static Connection c; // Creation of a connection
-	private static String URL = "jdbc:postgresql://172.31.249.44:5432/NamaiDB"; // Database address
-	private static String login = "toto" ; // Database login
-	private static String password = "toto"; // Database password
-
-
-	public static Connection createConnection() throws SQLException { 
-		try {
-
-			return  DriverManager.getConnection (URL, login, password);
-		} catch (SQLException e) {
-			throw new SQLException("Can't create connection", e);
-		}
-
+    private static Connection c;
+	private static String URL ="jdbc:postgresql://172.31.249.44:5432/NamaiDB";
+	private static String login = "toto";
+	private static String password = "toto";
+	
+public static Connection createConnection() throws SQLException {
+	try {
+		return DriverManager.getConnection(URL, login, password);
+	} catch (SQLException e) {
+		throw new SQLException("Can't create connection", e);
 	}
+}
 
 	public static void main(String[] args) throws IOException, SQLException {
 		// TODO Auto-generated method stub
 		Scanner sc = new Scanner(System.in);
-
+		SocketClient client = new SocketClient();	// Socket creation
+		client.startConnection("172.31.249.89", 6666); // Start of connection with socket
+		
 		while(true) { // Menu display
 			System.out.println("########################### Menu Namai-city-client #########################");
 			System.out.println("1: Afficher");
@@ -47,10 +46,8 @@ public class Main {
 			System.out.println("3: Mettre à jour");
 			System.out.println("4: Supprimer");
 			System.out.println("5: Exit");
-			System.out.println("6: Tentative de connexion à la BDD depuis le client ");
+			//System.out.println("6: Tentative de connexion à la BDD depuis le client ");
 			System.out.println("########################### Menu Namai-city-client #########################");
-			SocketClient client = new SocketClient();	// Socket creation
-			client.startConnection("172.31.249.49", 6666); // Start of connection with socket
 			JSONObject obj=new JSONObject();  //JSONObject creation
 			String rep = sc.nextLine();
 
@@ -73,12 +70,8 @@ public class Main {
 					JSONObject reponseAll = client.sendMessage(obj);
 					ArrayList<JSONObject> allUsers = new ArrayList<JSONObject>();// Creation d'un tableau de type JSONObject
 					allUsers = (ArrayList<JSONObject>) reponseAll.get("users");
-					for(int i = 0; i<allUsers.size();i++) { // Creating a loop to display all users in the table users
-						System.out.println("id: "+allUsers.get(i).get("Id")+ // ID display
-								" | nom: "+allUsers.get(i).get("nom")+ // Name display
-								" | prenom: "+allUsers.get(i).get("prenom")); // First name display 
-					}			 
-					client.stopConnection();  // Exit cases
+					System.out.println(allUsers);		 
+//					client.stopConnection();  // Exit cases
 					break;
 
 
@@ -110,7 +103,7 @@ public class Main {
 						System.out.println("voici les informations de l'utilisateur: \n" + name +"\n" + prenom + "\n "+id+ "\n");  
 					}
 
-					client.stopConnection();  
+	//				client.stopConnection();  
 					break; // Exit cases
 				}
 				break;
@@ -142,7 +135,7 @@ public class Main {
 				String prenomInsert = (String) reponse.get("prenom");  
 				String nomInsert = (String) reponse.get("nom");
 				System.out.println(repServer +": \n" + prenomInsert + ": \n " + nomInsert  + ": \n");  // Display data
-				client.stopConnection();
+				//client.stopConnection();
 				break; // Exit cases
 
 			case "3": 
@@ -153,9 +146,6 @@ public class Main {
 
 				String id_update = sc.nextLine();
 				Integer id_user_update = Integer.parseInt(id_update);
-
-				String id = sc.nextLine(); // Recovery of the id
-				Integer id_user = Integer.parseInt(id);
 
 				System.out.print("le nom ? ");
 				String nomUpdate = sc.nextLine(); // Recovery of the name
@@ -181,7 +171,6 @@ public class Main {
 				}
 
 				System.out.println(repServerUpdate);
-				client.stopConnection();
 
 				break; // Exit cases
 
@@ -208,7 +197,6 @@ public class Main {
 				else {
 					System.out.println(repServerDelete);
 				}
-				client.stopConnection();
 
 				break; // Exit cases
 
@@ -217,20 +205,21 @@ public class Main {
 				// Close all connection and socket
 				System.out.println("########################### EXIT #########################");
 				System.out.println("Merci de votre visite, A bientot!");
-				client.stopConnection();
+				//client.stopConnection();
 				System.exit(0);
 				break; // Exit cases 
 
 			case "6": 
 				// This case is to show that cannot connect directly to the database 
 
-				c = createConnection(); 
+				client.stopConnection();
+		     	c = createConnection(); 
 				System.out.println("nom:");
 				String nomBDD = sc.nextLine();
 				System.out.println("prénom:");
 				String prenomBDD = sc.nextLine();
 
-				PreparedStatement stmt3 = c.prepareStatement("insert into utilisateur(nom,prenom) values (?,?);"); // Preparation of the request
+			    PreparedStatement stmt3 = c.prepareStatement("insert into utilisateur(nom,prenom) values (?,?);"); // Preparation of the request
 				stmt3.setString(1, nomBDD); 
 				stmt3.setString(2,prenomBDD);
 				stmt3.execute(); // Execution of the request

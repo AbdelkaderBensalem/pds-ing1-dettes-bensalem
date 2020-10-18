@@ -1,4 +1,4 @@
-package server;
+package connection_pool;
 
 import java.sql.*;
 

@@ -1,4 +1,4 @@
-package server;
+package connection_pool;
 
 
 import java.io.*;
@@ -28,7 +28,7 @@ public class GetDataConnection {
 			login = prop.getProperty("username");
 			password = prop.getProperty("password");
 			DriverName = prop.getProperty("DriverName");
-
+			System.out.println(DatabaseUrl + "url");
 		} catch (final IOException ex) {
 			ex.printStackTrace();
 		} finally {
