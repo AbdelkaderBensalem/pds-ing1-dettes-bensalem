@@ -6,9 +6,9 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Abdelkader/git/namai-city/librairies/json-simple-1.1.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Abdelkader/git/namai-city/librairies/postgresql-42.2.2.jre7.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Abdelkader/Desktop/jar/jcommon-1.0.23.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Abdel/Desktop/jar projet/json-simple-1.1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Abdel/Desktop/jar projet/postgresql-42.2.2.jre7.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Abdel/Desktop/jar projet/jcommon-1.0.23.jar"/>
 	<classpathentry kind="lib" path="ressources"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
