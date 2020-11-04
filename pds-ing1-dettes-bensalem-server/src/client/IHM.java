@@ -66,7 +66,7 @@ public class IHM {
 		frmSystmeDeCalcul.getContentPane().add(panel);
 		panel.setLayout(null);
 		
-		JButton btnNewButton = new JButton("Calculer l'empreinte carbone r\u00E9elle");
+		JButton btnNewButton = new JButton("Calculer l'empreinte carbone r\u00E9elle ");
 		btnNewButton.setBackground(new Color(220, 220, 220));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
