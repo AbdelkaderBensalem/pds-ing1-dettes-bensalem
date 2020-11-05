@@ -39,6 +39,10 @@ public static Connection createConnection() throws SQLException {
 		SocketClient client = new SocketClient();	// Socket creation
 		client.startConnection("172.31.249.89", 6666); // Start of connection with socket
 		
+		//LANCEMENT IHM
+		IHM window = new IHM();
+		window.frmSystmeDeCalcul.setVisible(true);
+		
 		while(true) { // Menu display
 			System.out.println("########################### Menu Namai-city-client #########################");
 			System.out.println("1: Afficher");
@@ -51,8 +55,7 @@ public static Connection createConnection() throws SQLException {
 			JSONObject obj=new JSONObject();  //JSONObject creation
 			String rep = sc.nextLine();
 
-
-
+			
 			switch (rep) {
 			case "1": // Menu display
 				System.out.println("########################### Menu Namai-city-client #########################");
