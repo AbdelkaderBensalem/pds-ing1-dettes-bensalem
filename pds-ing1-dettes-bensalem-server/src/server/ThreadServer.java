@@ -68,7 +68,7 @@ public ThreadServer (Socket socket,Connection connection){
 				System.out.println(idJson);
 				if(idJson == 0) {
 
-					PreparedStatement stmt1 = c.prepareStatement("select * from carbonepieton;");
+					PreparedStatement stmt1 = c.prepareStatement("select * from utilisateur;");
 					ResultSet rs2 = stmt1.executeQuery();
 
 					JSONObject obj=new JSONObject();
@@ -78,9 +78,9 @@ public ThreadServer (Socket socket,Connection connection){
 					while (rs2.next()) {
 						JSONObject user=new JSONObject();
 						// recovery of each user's data (id/ name/ first name) 
-						user.put("id", rs2.getInt("id"));
+						user.put("Id", rs2.getInt("id_user"));
 						user.put("nom", rs2.getString("nom"));
-						user.put("distancemoy", rs2.getString("distancemoy"));
+						user.put("prenom", rs2.getString("prenom"));
 
 						// adding each user to the list already created
 						listUsers.add(user);
