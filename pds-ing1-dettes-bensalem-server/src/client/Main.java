@@ -43,15 +43,16 @@ public static Connection createConnection() throws SQLException {
 		IHM window = new IHM();
 		window.frmSystmeDeCalcul.setVisible(true);
 		
+		
 		while(true) { // Menu display
-			System.out.println("########################### Menu Namai-city-client #########################");
+			/*System.out.println("########################### Menu Namai-city-client #########################");
 			System.out.println("1: Afficher");
 			System.out.println("2: Créer");
 			System.out.println("3: Mettre à jour");
 			System.out.println("4: Supprimer");
 			System.out.println("5: Exit");
 			//System.out.println("6: Tentative de connexion à la BDD depuis le client ");
-			System.out.println("########################### Menu Namai-city-client #########################");
+			System.out.println("########################### Menu Namai-city-client #########################");*/
 			JSONObject obj=new JSONObject();  //JSONObject creation
 			String rep = sc.nextLine();
 
@@ -235,5 +236,24 @@ public static Connection createConnection() throws SQLException {
 			}
 
 		}
+	}
+	
+	public static void recupData() throws IOException {
+		
+		Scanner sc = new Scanner(System.in);
+		SocketClient client = new SocketClient();	// Socket creation
+		client.startConnection("172.31.249.89", 6666); // Start of connection with socket
+		
+		JSONObject obj=new JSONObject();
+		
+		System.out.println("########################### SELECT #########################");
+		obj.put("demandType",String.valueOf("SELECT"));
+		obj.put("Id",Integer.valueOf(0)); 
+		System.out.println(obj);
+		JSONObject reponseAll = client.sendMessage(obj);
+		ArrayList<JSONObject> allUsers = new ArrayList<JSONObject>();// Creation d'un tableau de type JSONObject
+		allUsers = (ArrayList<JSONObject>) reponseAll.get("users");
+		System.out.println(allUsers);
+		
 	}
 }

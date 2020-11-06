@@ -172,7 +172,7 @@ public class TestSimulation {
 		
 		JLabel lblNewLabel_2_1_1_1 = new JLabel("Test Technique Donn\u00E9es Simul\u00E9es");
 		lblNewLabel_2_1_1_1.setForeground(Color.RED);
-		lblNewLabel_2_1_1_1.setBounds(28, 234, 191, 20);
+		lblNewLabel_2_1_1_1.setBounds(28, 234, 225, 20);
 		panel.add(lblNewLabel_2_1_1_1);
 	}
 }

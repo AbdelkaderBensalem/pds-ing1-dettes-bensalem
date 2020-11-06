@@ -9,6 +9,7 @@ import javax.swing.JTextField;
 import java.awt.GridLayout;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import java.awt.SystemColor;
@@ -77,19 +78,25 @@ public class IHM {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
+				try {
+					Main.recupData();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				/* RECUPERER DANS LA BASE LE NOMBRE D'UTILISATEURS (NBR DE LIGNE DE LA TABLE) DANS DES VARIABLES :
 				NombreUserVelo , NombreUserVoiture, NombreUserTram, NombreUserPieton
 				RECUPERER SOMME COLONNE DISTANCEMOY DANS DES VARIABLES :
 				DistancMoyVelo, DistancMoyVoiture, DistancMoyTram, DistancMoyPieton
 				LES PLACER DANS LES TEXTFIELD */
 				
-				co2tram = (Integer.parseInt(textField.getText()) * Integer.parseInt(textField_1.getText()) * 3) / 100;
+				/*co2tram = (Integer.parseInt(textField.getText()) * Integer.parseInt(textField_1.getText()) * 3) / 100;
 				co2voiture = (Integer.parseInt(textField_2.getText()) * Integer.parseInt(textField_3.getText()) * 166);
 				co2velo = (Integer.parseInt(textField_4.getText()) * Integer.parseInt(textField_5.getText()) * 15);
 				co2pieton = (Integer.parseInt(textField_6.getText()) * Integer.parseInt(textField_7.getText()) * 10);
 				
 				resultat = co2tram+co2voiture+co2velo+co2pieton;
-				textField_8.setText(String.valueOf(resultat/1000));
+				textField_8.setText(String.valueOf(resultat/1000));*/
 			}
 		});
 		btnNewButton.setBounds(64, 248, 210, 35);
