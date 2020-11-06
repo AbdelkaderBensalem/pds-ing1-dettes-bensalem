@@ -240,14 +240,13 @@ public static Connection createConnection() throws SQLException {
 	
 	public static void recupData() throws IOException {
 		
-		Scanner sc = new Scanner(System.in);
 		SocketClient client = new SocketClient();	// Socket creation
 		client.startConnection("172.31.249.89", 6666); // Start of connection with socket
 		
 		JSONObject obj=new JSONObject();
 		
 		System.out.println("########################### SELECT #########################");
-		obj.put("demandType",String.valueOf("SELECT"));
+		obj.put("demandType",String.valueOf("SELECTT"));
 		obj.put("Id",Integer.valueOf(0)); 
 		System.out.println(obj);
 		JSONObject reponseAll = client.sendMessage(obj);

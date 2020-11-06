@@ -78,25 +78,34 @@ public class IHM {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				try {
-					Main.recupData();
-				} catch (IOException e) {
+				//try {
+					//Main.recupData();
+				//} catch (IOException e) {
 					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+					//e.printStackTrace();
+				//}
 				/* RECUPERER DANS LA BASE LE NOMBRE D'UTILISATEURS (NBR DE LIGNE DE LA TABLE) DANS DES VARIABLES :
 				NombreUserVelo , NombreUserVoiture, NombreUserTram, NombreUserPieton
 				RECUPERER SOMME COLONNE DISTANCEMOY DANS DES VARIABLES :
 				DistancMoyVelo, DistancMoyVoiture, DistancMoyTram, DistancMoyPieton
 				LES PLACER DANS LES TEXTFIELD */
 				
-				/*co2tram = (Integer.parseInt(textField.getText()) * Integer.parseInt(textField_1.getText()) * 3) / 100;
+				textField.setText(String.valueOf(554));
+				textField_1.setText(String.valueOf(13));
+				textField_2.setText(String.valueOf(495));
+				textField_3.setText(String.valueOf(27));
+				textField_4.setText(String.valueOf(93));
+				textField_5.setText(String.valueOf(9));
+				textField_6.setText(String.valueOf(975));
+				textField_7.setText(String.valueOf(3));
+				
+				co2tram = (Integer.parseInt(textField.getText()) * Integer.parseInt(textField_1.getText()) * 3) / 100;
 				co2voiture = (Integer.parseInt(textField_2.getText()) * Integer.parseInt(textField_3.getText()) * 166);
 				co2velo = (Integer.parseInt(textField_4.getText()) * Integer.parseInt(textField_5.getText()) * 15);
 				co2pieton = (Integer.parseInt(textField_6.getText()) * Integer.parseInt(textField_7.getText()) * 10);
 				
 				resultat = co2tram+co2voiture+co2velo+co2pieton;
-				textField_8.setText(String.valueOf(resultat/1000));*/
+				textField_8.setText(String.valueOf(resultat/1000));
 			}
 		});
 		btnNewButton.setBounds(64, 248, 210, 35);
@@ -145,13 +154,19 @@ public class IHM {
 		JButton btnNewButton_1 = new JButton("Lancer la Simulation");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				co2tram = (Integer.parseInt(textField.getText()) * Integer.parseInt(textField_1.getText()) * 3) / 100;
+				try{
+					co2tram = (Integer.parseInt(textField.getText()) * Integer.parseInt(textField_1.getText()) * 3) / 100;
 				co2voiture = (Integer.parseInt(textField_2.getText()) * Integer.parseInt(textField_3.getText()) * 166);
 				co2velo = (Integer.parseInt(textField_4.getText()) * Integer.parseInt(textField_5.getText()) * 15);
 				co2pieton = (Integer.parseInt(textField_6.getText()) * Integer.parseInt(textField_7.getText()) * 10);
 				
 				resultat = co2tram+co2voiture+co2velo+co2pieton;
 				textField_8.setText(String.valueOf(resultat/1000)); 
+				}
+				catch (Exception e) {
+					Msgerreur window = new Msgerreur();
+					window.frame.setVisible(true);
+				}
 			}
 		});
 		btnNewButton_1.setBounds(306, 248, 167, 35);

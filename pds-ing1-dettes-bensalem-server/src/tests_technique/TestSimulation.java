@@ -6,6 +6,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import javax.swing.JTextField;
+
+import client.Msgerreur;
+
 import java.awt.GridLayout;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -153,26 +156,30 @@ public class TestSimulation {
 		lblNewLabel_2_1_1.setBounds(136, 203, 138, 20);
 		panel.add(lblNewLabel_2_1_1);
 		
-		textField.setText(String.valueOf(600));
-		textField_1.setText(String.valueOf(16));
-		textField_2.setText(String.valueOf(520));
-		textField_3.setText(String.valueOf(30));
-		textField_4.setText(String.valueOf(100));
-		textField_5.setText(String.valueOf(8));
-		textField_6.setText(String.valueOf(900));
-		textField_7.setText(String.valueOf(4));
-		
-		int resTram = (600*16*3)/100;
-		int resAuto = 520*30*166;
-		int resVelo = 100*8*15;
-		int resPieton = 900*4*10;
-		
-		int resultat = (resTram+resAuto+resVelo+resPieton)/1000;
-		textField_8.setText(String.valueOf(resultat));
-		
 		JLabel lblNewLabel_2_1_1_1 = new JLabel("Test Technique Donn\u00E9es Simul\u00E9es");
 		lblNewLabel_2_1_1_1.setForeground(Color.RED);
 		lblNewLabel_2_1_1_1.setBounds(28, 234, 225, 20);
 		panel.add(lblNewLabel_2_1_1_1);
+		
+		JButton btnNewButton = new JButton("Tester");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+				co2tram = (Integer.parseInt(textField.getText()) * Integer.parseInt(textField_1.getText()) * 3) / 100;
+				co2voiture = (Integer.parseInt(textField_2.getText()) * Integer.parseInt(textField_3.getText()) * 166);
+				co2velo = (Integer.parseInt(textField_4.getText()) * Integer.parseInt(textField_5.getText()) * 15);
+				co2pieton = (Integer.parseInt(textField_6.getText()) * Integer.parseInt(textField_7.getText()) * 10);
+				
+				resultat = co2tram+co2voiture+co2velo+co2pieton;
+				textField_8.setText(String.valueOf(resultat/1000));
+					}
+				catch (Exception e){
+					Msgerreur window = new Msgerreur();
+					window.frame.setVisible(true);
+					}
+				}
+		});
+		btnNewButton.setBounds(266, 234, 89, 23);
+		panel.add(btnNewButton);
 	}
 }

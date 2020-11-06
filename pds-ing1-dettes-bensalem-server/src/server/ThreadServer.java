@@ -121,6 +121,67 @@ public ThreadServer (Socket socket,Connection connection){
 					return obj; 
 				}
 			}
+			
+			if(JsonRecu.get("demandType").equals("SELECTT")) {
+				long idcaste = Long.valueOf(JsonRecu.get("Id").toString());
+				int idJson = (int) idcaste;
+				System.out.println("bonjour voici le ID recu apres traitement");
+				System.out.println(idJson);
+				if(idJson == 0) {
+
+					PreparedStatement stmt1 = c.prepareStatement("select distancemoy from carbonevoiture;");
+					ResultSet rs2 = stmt1.executeQuery();
+
+					JSONObject obj=new JSONObject();
+					// creation of users list 
+					ArrayList<JSONObject> listUsers = new ArrayList<JSONObject>();
+
+					while (rs2.next()) {
+						JSONObject user=new JSONObject();
+						// recovery of each user's data (id/ name/ first name) 
+						user.put("distancemoy", rs2.getInt("distancemoy"));
+						//user.put("nom", rs2.getString("nom"));
+						//user.put("prenom", rs2.getString("prenom"));
+
+						// adding each user to the list already created
+						listUsers.add(user);
+
+
+					}
+					//System.out.println("voici l'arrayList : ");
+					// displaying the list 
+					//System.out.println(listUsers);
+
+					obj.put("users", listUsers);
+					System.out.println("voici le json envoyé avec le select All: ");
+					// displaying the Json
+					System.out.println(obj);
+					Thread.sleep(3000); 
+					return obj; 
+				}
+				else {
+					PreparedStatement stmtJson = c.prepareStatement("select * from utilisateur where id_user = ?");
+					stmtJson.setInt(1, idJson);
+					ResultSet jsonResponse = stmtJson.executeQuery();
+					JSONObject obj=new JSONObject(); 
+					int cpt = 0;
+
+					while (jsonResponse.next()) {
+						//recovery of the data of the user in question 
+						cpt++;
+						obj.put("Id",jsonResponse.getInt("id_user"));
+						obj.put("nom",jsonResponse.getString("nom"));
+						obj.put("prenom",jsonResponse.getString("prenom"));
+					}
+					if(cpt == 0) {
+						obj.put("reponse", "verifier l'id insere");
+					}
+					// displaying the json 
+					System.out.println(obj);
+					Thread.sleep(3000); 
+					return obj; 
+				}
+			}
 
 			if(JsonRecu.get("demandType").equals("INSERT")) {
 				System.out.println("Je suis rentré dans la requête INSERT"); 
