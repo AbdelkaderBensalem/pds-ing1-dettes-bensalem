@@ -24,7 +24,10 @@ public class Main {
 	private static String URL ="jdbc:postgresql://172.31.249.44:5432/NamaiDB";
 	private static String login = "toto";
 	private static String password = "toto";
-	public static String valstring;
+	public static String nbtram;
+	public static String nbauto;
+	public static String nbcycliste;
+	public static String nbpieton;
 	
 public static Connection createConnection() throws SQLException {
 	try {
@@ -258,10 +261,25 @@ public static Connection createConnection() throws SQLException {
 		
 		JSONObject val = allUsers.get(1);
 		
-		valstring = (String) val.get("nom");
-		System.out.println(val.get("nom"));
+		nbtram = (String) val.get("nom");
+		System.out.println(nbtram);
 		
-		//System.out.println("LE NOM EST " + xtest);
+        JSONObject val2 = allUsers.get(2);
+		
+		nbauto = (String) val2.get("nom");
+		System.out.println(nbauto);
+		
+		JSONObject val3 = allUsers.get(3);
+		
+		nbcycliste = (String) val3.get("nom");
+		System.out.println(nbcycliste);
+		
+		JSONObject val4 = allUsers.get(4);
+		
+		nbpieton = (String) val4.get("nom");
+		System.out.println(nbpieton);
+		
+		System.out.println("NBTRAM = " + nbtram + " NBAUTO = " + nbauto +" NBCYCLISTE = " + nbcycliste + " NBPIETON = " + nbpieton);
 		
 	}
 }

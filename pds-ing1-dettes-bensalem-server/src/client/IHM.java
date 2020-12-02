@@ -36,6 +36,7 @@ public class IHM {
 	int co2tram;
 	int co2pieton;
 	int co2velo;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -93,7 +94,14 @@ public class IHM {
 				DistancMoyVelo, DistancMoyVoiture, DistancMoyTram, DistancMoyPieton
 				LES PLACER DANS LES TEXTFIELD */
 				
-				textField.setText(Main.valstring);
+				textField_2.setText(Main.nbauto);
+				textField.setText(Main.nbtram);
+				textField_4.setText(Main.nbcycliste);
+				textField_6.setText(Main.nbpieton);
+				//textField.setText(Main.);
+				//textField_2.setText(Main.nbauto);
+				//textField_4.setText(Main.nbcycliste);
+				//textField_6.setText(Main.nbpieton);
 				/*textField_1.setText(String.valueOf(13));
 				textField_2.setText(String.valueOf(495));
 				textField_3.setText(String.valueOf(27));
