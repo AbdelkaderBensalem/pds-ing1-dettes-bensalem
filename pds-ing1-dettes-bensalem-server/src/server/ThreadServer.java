@@ -1,6 +1,7 @@
 package server;
 
 import java.io.BufferedReader;
+
 import java.io.FileReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -129,7 +130,7 @@ public ThreadServer (Socket socket,Connection connection){
 				System.out.println(idJson);
 				if(idJson == 0) {
 
-					PreparedStatement stmt1 = c.prepareStatement("select distancemoy from carbonevoiture;");
+					PreparedStatement stmt1 = c.prepareStatement("select nom from utilisateur;");
 					ResultSet rs2 = stmt1.executeQuery();
 
 					JSONObject obj=new JSONObject();
@@ -139,7 +140,9 @@ public ThreadServer (Socket socket,Connection connection){
 					while (rs2.next()) {
 						JSONObject user=new JSONObject();
 						// recovery of each user's data (id/ name/ first name) 
-						user.put("distancemoy", rs2.getInt("distancemoy"));
+						//user.put("Id", rs2.getInt("id_user"));
+						user.put("nom", rs2.getString("nom"));
+						//user.put("prenom", rs2.getString("prenom"));
 						//user.put("nom", rs2.getString("nom"));
 						//user.put("prenom", rs2.getString("prenom"));
 

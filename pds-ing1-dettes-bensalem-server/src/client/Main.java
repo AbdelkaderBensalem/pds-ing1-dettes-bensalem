@@ -1,6 +1,7 @@
 package client;
 
 import java.io.IOException;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
@@ -16,7 +17,6 @@ import java.util.Properties;
 import java.util.Scanner;
 
 import org.json.simple.*;
-
 //import socketClient.SocketClient;
 
 public class Main {
@@ -24,6 +24,7 @@ public class Main {
 	private static String URL ="jdbc:postgresql://172.31.249.44:5432/NamaiDB";
 	private static String login = "toto";
 	private static String password = "toto";
+	public static String valstring;
 	
 public static Connection createConnection() throws SQLException {
 	try {
@@ -253,6 +254,14 @@ public static Connection createConnection() throws SQLException {
 		ArrayList<JSONObject> allUsers = new ArrayList<JSONObject>();// Creation d'un tableau de type JSONObject
 		allUsers = (ArrayList<JSONObject>) reponseAll.get("users");
 		System.out.println(allUsers);
+		
+		
+		JSONObject val = allUsers.get(1);
+		
+		valstring = (String) val.get("nom");
+		System.out.println(val.get("nom"));
+		
+		//System.out.println("LE NOM EST " + xtest);
 		
 	}
 }

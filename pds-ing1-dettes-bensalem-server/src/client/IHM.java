@@ -6,10 +6,14 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import javax.swing.JTextField;
+
+import org.json.simple.JSONObject;
+
 import java.awt.GridLayout;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import java.awt.SystemColor;
@@ -32,7 +36,6 @@ public class IHM {
 	int co2tram;
 	int co2pieton;
 	int co2velo;
-
 	/**
 	 * Launch the application.
 	 */
@@ -77,21 +80,21 @@ public class IHM {
 		btnNewButton.setBackground(new Color(220, 220, 220));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
-				//try {
-					//Main.recupData();
-				//} catch (IOException e) {
-					// TODO Auto-generated catch block
-					//e.printStackTrace();
-				//}
+						
+				try {
+					Main.recupData();
+				} catch (IOException e) {
+					 //TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				/* RECUPERER DANS LA BASE LE NOMBRE D'UTILISATEURS (NBR DE LIGNE DE LA TABLE) DANS DES VARIABLES :
 				NombreUserVelo , NombreUserVoiture, NombreUserTram, NombreUserPieton
 				RECUPERER SOMME COLONNE DISTANCEMOY DANS DES VARIABLES :
 				DistancMoyVelo, DistancMoyVoiture, DistancMoyTram, DistancMoyPieton
 				LES PLACER DANS LES TEXTFIELD */
 				
-				textField.setText(String.valueOf(554));
-				textField_1.setText(String.valueOf(13));
+				textField.setText(Main.valstring);
+				/*textField_1.setText(String.valueOf(13));
 				textField_2.setText(String.valueOf(495));
 				textField_3.setText(String.valueOf(27));
 				textField_4.setText(String.valueOf(93));
@@ -105,7 +108,7 @@ public class IHM {
 				co2pieton = (Integer.parseInt(textField_6.getText()) * Integer.parseInt(textField_7.getText()) * 10);
 				
 				resultat = co2tram+co2voiture+co2velo+co2pieton;
-				textField_8.setText(String.valueOf(resultat/1000));
+				textField_8.setText(String.valueOf(resultat/1000));*/
 			}
 		});
 		btnNewButton.setBounds(64, 248, 210, 35);
