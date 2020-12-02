@@ -98,6 +98,12 @@ public class IHM {
 				textField.setText(Main.nbtram);
 				textField_4.setText(Main.nbcycliste);
 				textField_6.setText(Main.nbpieton);
+				
+				textField_1.setText(Main.distauto);
+				textField_3.setText(Main.disttram);
+				textField_5.setText(Main.distcycliste);
+				textField_7.setText(Main.distpieton);
+				
 				//textField.setText(Main.);
 				//textField_2.setText(Main.nbauto);
 				//textField_4.setText(Main.nbcycliste);

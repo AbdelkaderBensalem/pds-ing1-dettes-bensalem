@@ -28,6 +28,10 @@ public class Main {
 	public static String nbauto;
 	public static String nbcycliste;
 	public static String nbpieton;
+	public static String disttram;
+	public static String distauto;
+	public static String distcycliste;
+	public static String distpieton;
 	
 public static Connection createConnection() throws SQLException {
 	try {
@@ -280,6 +284,26 @@ public static Connection createConnection() throws SQLException {
 		System.out.println(nbpieton);
 		
 		System.out.println("NBTRAM = " + nbtram + " NBAUTO = " + nbauto +" NBCYCLISTE = " + nbcycliste + " NBPIETON = " + nbpieton);
+		
+		JSONObject val5 = allUsers.get(5);
+		
+		disttram = (String) val5.get("nom");
+		System.out.println(disttram);
+		
+		JSONObject val6 = allUsers.get(6);
+		
+		distauto = (String) val6.get("nom");
+		System.out.println(distauto);
+		
+		JSONObject val7 = allUsers.get(7);
+		
+		distcycliste = (String) val7.get("nom");
+		System.out.println(distcycliste);
+		
+		JSONObject val8 = allUsers.get(8);
+		
+		distpieton = (String) val8.get("nom");
+		System.out.println(distpieton);
 		
 	}
 }
