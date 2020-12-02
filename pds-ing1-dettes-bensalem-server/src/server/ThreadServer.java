@@ -130,7 +130,7 @@ public ThreadServer (Socket socket,Connection connection){
 				System.out.println(idJson);
 				if(idJson == 0) {
 
-					PreparedStatement stmt1 = c.prepareStatement("select nom from utilisateur;");
+					PreparedStatement stmt1 = c.prepareStatement("select * from utilisateur;");
 					ResultSet rs2 = stmt1.executeQuery();
 
 					JSONObject obj=new JSONObject();
@@ -142,7 +142,7 @@ public ThreadServer (Socket socket,Connection connection){
 						// recovery of each user's data (id/ name/ first name) 
 						//user.put("Id", rs2.getInt("id_user"));
 						user.put("nom", rs2.getString("nom"));
-						//user.put("prenom", rs2.getString("prenom"));
+						user.put("prenom", rs2.getString("prenom"));
 						//user.put("nom", rs2.getString("nom"));
 						//user.put("prenom", rs2.getString("prenom"));
 

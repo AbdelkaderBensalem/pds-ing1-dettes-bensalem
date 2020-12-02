@@ -263,47 +263,39 @@ public static Connection createConnection() throws SQLException {
 		System.out.println(allUsers);
 		
 		
-		JSONObject val = allUsers.get(1);
+		JSONObject val = allUsers.get(0);
 		
 		nbtram = (String) val.get("nom");
 		System.out.println(nbtram);
 		
-        JSONObject val2 = allUsers.get(2);
+        JSONObject val2 = allUsers.get(1);
 		
 		nbauto = (String) val2.get("nom");
 		System.out.println(nbauto);
 		
-		JSONObject val3 = allUsers.get(3);
+		JSONObject val3 = allUsers.get(2);
 		
 		nbcycliste = (String) val3.get("nom");
 		System.out.println(nbcycliste);
 		
-		JSONObject val4 = allUsers.get(4);
+		JSONObject val4 = allUsers.get(3);
 		
 		nbpieton = (String) val4.get("nom");
 		System.out.println(nbpieton);
 		
-		System.out.println("NBTRAM = " + nbtram + " NBAUTO = " + nbauto +" NBCYCLISTE = " + nbcycliste + " NBPIETON = " + nbpieton);
-		
-		JSONObject val5 = allUsers.get(5);
-		
-		disttram = (String) val5.get("nom");
+		disttram = (String) val.get("prenom");
 		System.out.println(disttram);
 		
-		JSONObject val6 = allUsers.get(6);
-		
-		distauto = (String) val6.get("nom");
+		distauto = (String) val2.get("prenom");
 		System.out.println(distauto);
 		
-		JSONObject val7 = allUsers.get(7);
-		
-		distcycliste = (String) val7.get("nom");
+		distcycliste = (String) val3.get("prenom");
 		System.out.println(distcycliste);
 		
-		JSONObject val8 = allUsers.get(8);
-		
-		distpieton = (String) val8.get("nom");
+		distpieton = (String) val4.get("prenom");
 		System.out.println(distpieton);
+		
+		
 		
 	}
 }
