@@ -36,6 +36,8 @@ public class IHM {
 	int co2tram;
 	int co2pieton;
 	int co2velo;
+	private JTextField textField_9;
+	private JTextField textField_10;
 	
 	/**
 	 * Launch the application.
@@ -103,6 +105,14 @@ public class IHM {
 				textField_3.setText(Main.disttram);
 				textField_5.setText(Main.distcycliste);
 				textField_7.setText(Main.distpieton);
+				
+				co2tram = (Integer.parseInt(textField.getText()) * Integer.parseInt(textField_1.getText()) * 3) / 100;
+				co2voiture = (Integer.parseInt(textField_2.getText()) * Integer.parseInt(textField_3.getText()) * 166);
+				co2velo = (Integer.parseInt(textField_4.getText()) * Integer.parseInt(textField_5.getText()) * 15);
+				co2pieton = (Integer.parseInt(textField_6.getText()) * Integer.parseInt(textField_7.getText()) * 10);
+				
+				resultat = co2tram+co2voiture+co2velo+co2pieton;
+				textField_8.setText(String.valueOf(resultat/1000));
 				
 				//textField.setText(Main.);
 				//textField_2.setText(Main.nbauto);
@@ -178,7 +188,15 @@ public class IHM {
 				co2pieton = (Integer.parseInt(textField_6.getText()) * Integer.parseInt(textField_7.getText()) * 10);
 				
 				resultat = co2tram+co2voiture+co2velo+co2pieton;
-				textField_8.setText(String.valueOf(resultat/1000)); 
+				textField_10.setText(String.valueOf(resultat/1000)); 
+				
+				if((Integer.parseInt(textField_8.getText()))<(Integer.parseInt(textField_10.getText()))){
+					textField_9.setText("Votre simulation permet de baisser le taux de pollution"); 
+				}
+				else {
+					textField_9.setText("Votre simulation ne permet pas de baisser le taux de pollution"); 
+				}
+					
 				}
 				catch (Exception e) {
 					Msgerreur window = new Msgerreur();
@@ -223,11 +241,25 @@ public class IHM {
 		
 		textField_8 = new JTextField();
 		textField_8.setColumns(10);
-		textField_8.setBounds(266, 203, 111, 20);
+		textField_8.setBounds(142, 203, 111, 20);
 		panel.add(textField_8);
 		
-		JLabel lblNewLabel_2_1_1 = new JLabel("Emission totale (en kg)");
-		lblNewLabel_2_1_1.setBounds(136, 203, 138, 20);
+		JLabel lblNewLabel_2_1_1 = new JLabel("Total r\u00E9el (en kg)");
+		lblNewLabel_2_1_1.setBounds(44, 203, 138, 20);
 		panel.add(lblNewLabel_2_1_1);
+		
+		textField_9 = new JTextField();
+		textField_9.setBounds(96, 305, 355, 20);
+		panel.add(textField_9);
+		textField_9.setColumns(10);
+		
+		textField_10 = new JTextField();
+		textField_10.setBounds(417, 203, 86, 20);
+		panel.add(textField_10);
+		textField_10.setColumns(10);
+		
+		JLabel lblNewLabel_2_1_1_1 = new JLabel("Estimation (en kg)");
+		lblNewLabel_2_1_1_1.setBounds(315, 203, 92, 20);
+		panel.add(lblNewLabel_2_1_1_1);
 	}
 }
