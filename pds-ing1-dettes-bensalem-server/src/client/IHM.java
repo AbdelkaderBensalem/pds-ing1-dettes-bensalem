@@ -38,7 +38,7 @@ public class IHM {
 	int co2velo;
 	private JTextField textField_9;
 	private JTextField textField_10;
-	
+			
 	/**
 	 * Launch the application.
 	 */
@@ -58,6 +58,7 @@ public class IHM {
 	/**
 	 * Create the application.
 	 */
+	
 	public IHM() {
 		initialize();
 	}
@@ -182,7 +183,9 @@ public class IHM {
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try{
-					co2tram = (Integer.parseInt(textField.getText()) * Integer.parseInt(textField_1.getText()) * 3) / 100;
+				Main.insertData();
+					
+				co2tram = (Integer.parseInt(textField.getText()) * Integer.parseInt(textField_1.getText()) * 3) / 100;
 				co2voiture = (Integer.parseInt(textField_2.getText()) * Integer.parseInt(textField_3.getText()) * 166);
 				co2velo = (Integer.parseInt(textField_4.getText()) * Integer.parseInt(textField_5.getText()) * 15);
 				co2pieton = (Integer.parseInt(textField_6.getText()) * Integer.parseInt(textField_7.getText()) * 10);
@@ -196,7 +199,6 @@ public class IHM {
 				else {
 					textField_9.setText("Votre simulation ne permet pas de baisser le taux de pollution"); 
 				}
-					
 				}
 				catch (Exception e) {
 					Msgerreur window = new Msgerreur();
@@ -262,4 +264,5 @@ public class IHM {
 		lblNewLabel_2_1_1_1.setBounds(315, 203, 92, 20);
 		panel.add(lblNewLabel_2_1_1_1);
 	}
+		
 }

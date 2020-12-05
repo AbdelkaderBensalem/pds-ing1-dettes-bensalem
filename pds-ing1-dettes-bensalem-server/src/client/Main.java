@@ -16,6 +16,8 @@ import java.util.InputMismatchException;
 import java.util.Properties;
 import java.util.Scanner;
 
+import javax.swing.JTextField;
+
 import org.json.simple.*;
 //import socketClient.SocketClient;
 
@@ -298,4 +300,57 @@ public static Connection createConnection() throws SQLException {
 		
 		
 	}
-}
+	
+	public static void insertData() throws IOException {
+		SocketClient client = new SocketClient();	// Socket creation
+		client.startConnection("172.31.249.89", 6666); // Start of connection with socket
+	
+		JSONObject obj=new JSONObject();
+		
+			System.out.println("########################### INSERT #########################");
+			String nom = "600"; // Recovery of the name
+			String prenom = "21"; // Recovery of the first name
+			obj.put("demandType",String.valueOf("INSERT"));
+			obj.put("nom",String.valueOf(nom));
+			obj.put("prenom",String.valueOf(prenom));
+			System.out.println(obj);
+			JSONObject reponse = client.sendMessage(obj); // Response server
+			String repServer = (String) reponse.get("reponse");  
+			System.out.println("insertion réussie");
+			
+			System.out.println("########################### INSERT #########################");
+			String nom2 = "350"; // Recovery of the name
+			String prenom2 = "12"; // Recovery of the first name
+			obj.put("demandType",String.valueOf("INSERT"));
+			obj.put("nom",String.valueOf(nom2));
+			obj.put("prenom",String.valueOf(prenom2));
+			System.out.println(obj);
+			JSONObject reponse2 = client.sendMessage(obj); // Response server
+			String repServer2 = (String) reponse.get("reponse");  
+			System.out.println("insertion réussie");
+			
+			System.out.println("########################### INSERT #########################");
+			String nom3 = "150"; // Recovery of the name
+			String prenom3 = "8"; // Recovery of the first name
+			obj.put("demandType",String.valueOf("INSERT"));
+			obj.put("nom",String.valueOf(nom3));
+			obj.put("prenom",String.valueOf(prenom3));
+			System.out.println(obj);
+			JSONObject reponse3 = client.sendMessage(obj); // Response server
+			String repServer3 = (String) reponse.get("reponse");  
+			System.out.println("insertion réussie");
+			
+			System.out.println("########################### INSERT #########################");
+			String nom4 = "600"; // Recovery of the name
+			String prenom4 = "3"; // Recovery of the first name
+			obj.put("demandType",String.valueOf("INSERT"));
+			obj.put("nom",String.valueOf(nom4));
+			obj.put("prenom",String.valueOf(prenom4));
+			System.out.println(obj);
+			JSONObject reponse4 = client.sendMessage(obj); // Response server
+			String repServer4 = (String) reponse.get("reponse");  
+			System.out.println("insertion réussie");
+			
+		}
+		
+	}
