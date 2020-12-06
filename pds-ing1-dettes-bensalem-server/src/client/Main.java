@@ -22,7 +22,8 @@ import org.json.simple.*;
 //import socketClient.SocketClient;
 
 public class Main {
-    private static Connection c;
+	
+	private static Connection c;
 	private static String URL ="jdbc:postgresql://172.31.249.44:5432/NamaiDB";
 	private static String login = "toto";
 	private static String password = "toto";
@@ -308,8 +309,8 @@ public static Connection createConnection() throws SQLException {
 		JSONObject obj=new JSONObject();
 		
 			System.out.println("########################### INSERT #########################");
-			String nom = "600"; // Recovery of the name
-			String prenom = "21"; // Recovery of the first name
+			String nom = IHM.textField.getText();// Recovery of the name
+			String prenom = IHM.textField_1.getText(); // Recovery of the first name
 			obj.put("demandType",String.valueOf("INSERT"));
 			obj.put("nom",String.valueOf(nom));
 			obj.put("prenom",String.valueOf(prenom));
@@ -319,8 +320,8 @@ public static Connection createConnection() throws SQLException {
 			System.out.println("insertion réussie");
 			
 			System.out.println("########################### INSERT #########################");
-			String nom2 = "350"; // Recovery of the name
-			String prenom2 = "12"; // Recovery of the first name
+			String nom2 = IHM.textField_2.getText(); // Recovery of the name
+			String prenom2 = IHM.textField_3.getText(); // Recovery of the first name
 			obj.put("demandType",String.valueOf("INSERT"));
 			obj.put("nom",String.valueOf(nom2));
 			obj.put("prenom",String.valueOf(prenom2));
@@ -330,8 +331,8 @@ public static Connection createConnection() throws SQLException {
 			System.out.println("insertion réussie");
 			
 			System.out.println("########################### INSERT #########################");
-			String nom3 = "150"; // Recovery of the name
-			String prenom3 = "8"; // Recovery of the first name
+			String nom3 = IHM.textField_4.getText();; // Recovery of the name
+			String prenom3 = IHM.textField_5.getText();; // Recovery of the first name
 			obj.put("demandType",String.valueOf("INSERT"));
 			obj.put("nom",String.valueOf(nom3));
 			obj.put("prenom",String.valueOf(prenom3));
@@ -341,8 +342,8 @@ public static Connection createConnection() throws SQLException {
 			System.out.println("insertion réussie");
 			
 			System.out.println("########################### INSERT #########################");
-			String nom4 = "600"; // Recovery of the name
-			String prenom4 = "3"; // Recovery of the first name
+			String nom4 = IHM.textField_6.getText();; // Recovery of the name
+			String prenom4 = IHM.textField_7.getText();; // Recovery of the first name
 			obj.put("demandType",String.valueOf("INSERT"));
 			obj.put("nom",String.valueOf(nom4));
 			obj.put("prenom",String.valueOf(prenom4));

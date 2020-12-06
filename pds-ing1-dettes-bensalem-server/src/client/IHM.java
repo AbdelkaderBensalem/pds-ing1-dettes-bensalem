@@ -22,15 +22,15 @@ import java.awt.Color;
 public class IHM {
 
 	JFrame frmSystmeDeCalcul;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField textField_6;
-	private JTextField textField_7;
-	private JTextField textField_8;
+	static JTextField textField;
+	static JTextField textField_1;
+	static JTextField textField_2;
+	public static JTextField textField_3;
+	public static JTextField textField_4;
+	public static JTextField textField_5;
+	public static JTextField textField_6;
+	public static JTextField textField_7;
+	public static JTextField textField_8;
 	int resultat;
 	int co2voiture;
 	int co2tram;
@@ -193,11 +193,14 @@ public class IHM {
 				resultat = co2tram+co2voiture+co2velo+co2pieton;
 				textField_10.setText(String.valueOf(resultat/1000)); 
 				
-				if((Integer.parseInt(textField_8.getText()))<(Integer.parseInt(textField_10.getText()))){
-					textField_9.setText("Votre simulation permet de baisser le taux de pollution"); 
+				int valreelle = Integer.parseInt(textField_8.getText());
+				int valsimu = Integer.parseInt(textField_10.getText());
+				
+				if(valreelle<valsimu){
+					textField_9.setText("Votre simulation ne permet pas de baisser le taux de pollution"); 
 				}
 				else {
-					textField_9.setText("Votre simulation ne permet pas de baisser le taux de pollution"); 
+					textField_9.setText("Votre simulation permet de baisser le taux de pollution"); 
 				}
 				}
 				catch (Exception e) {
@@ -264,5 +267,6 @@ public class IHM {
 		lblNewLabel_2_1_1_1.setBounds(315, 203, 92, 20);
 		panel.add(lblNewLabel_2_1_1_1);
 	}
+
 		
 }
